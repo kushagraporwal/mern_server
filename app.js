@@ -27,7 +27,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(methodoverride('_method'));
 app.use(cookieParser());
 
-app.use(cors({credentials: true, origin: 'https://affectionate-mcnulty-067fb0.netlify.app/'}));
+app.use(cors({credentials: true, origin: 'https://affectionate-mcnulty-067fb0.netlify.app'}));
 
 const authenticate= async(req, res, next)=>{
     try{
