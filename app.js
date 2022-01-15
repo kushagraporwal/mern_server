@@ -125,7 +125,7 @@ catch(err){
 }
 });
 
-app.post('/decline1/:id',async(req,res)=>{
+app.delete('/decline1/:id',async(req,res)=>{
     try{
         const id=req.params.id;
         const users= await User.deleteOne({_id: id});
