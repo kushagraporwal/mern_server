@@ -129,6 +129,7 @@ app.delete('/decline1/:id',async(req,res)=>{
     try{
         const id=req.params.id;
         const users= await User.deleteOne({_id: id});
+        console.log("deleted is "+users);
         res.send(users);
     }
     catch(err){
