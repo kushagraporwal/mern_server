@@ -53,7 +53,7 @@ app.get('/',(req,res)=>{
     res.send('Hello get');
 })
 
-app.get('/home1', authenticate, async(req,res)=>{
+app.get('/home1', async(req,res)=>{
     try{
         const users= await User.find();
         res.send(users);
