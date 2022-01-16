@@ -1,6 +1,5 @@
 const mongoose= require('mongoose');
 const jwt= require('jsonwebtoken');
-const SECRET_KEY= 'MYNAMEISKUSHAGRAPORWALIIITPUNESTUDENT';
 
 const adminschema= new mongoose.Schema({
     email:{
@@ -23,7 +22,7 @@ const adminschema= new mongoose.Schema({
 
 adminschema.methods.generateAuthToken= async function(){
     try{
-        let token= jwt.sign({_id: this._id}, SECRET_KEY);
+        let token= jwt.sign({_id: this._id}, process.env.SECRET_KEY);
         this.tokens= this.tokens.concat({token: token});
         await this.save();
         return token;

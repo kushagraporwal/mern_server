@@ -13,7 +13,6 @@ const cors= require('cors');
 dotenv.config({path: './config.env'});
 
 const DB= 'mongodb+srv://kushagra:kushagra@cluster0.y7dmu.mongodb.net/nemesis?retryWrites=true&w=majority';
-const SECRET_KEY= 'MYNAMEISKUSHAGRAPORWALIIITPUNESTUDENT';
 const PORT= process.env.PORT || 8000;
 mongoose.connect(DB, {
     useNewUrlParser: true,
@@ -33,8 +32,8 @@ app.use(cors({credentials: true, origin: 'https://affectionate-mcnulty-067fb0.ne
 const authenticate= async(req, res, next)=>{
     try{
         const token= req.cookies.jwtoken;
-        console.log("token2 is "+token);
-        const verifytoken= jwt.verify(token, SECRET_KEY);
+        console.log("token is "+token);
+        const verifytoken= jwt.verify(token, process.env.SECRET_KEY);
         const rootuser= await Admin.findOne({_id: verifytoken._id, "tokens.token": token});
         if(!rootuser){
             throw new Error('User not found')
