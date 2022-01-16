@@ -33,6 +33,7 @@ app.use(cors({credentials: true, origin: 'https://affectionate-mcnulty-067fb0.ne
 const authenticate= async(req, res, next)=>{
     try{
         const token= req.cookies.jwtoken;
+        console.log("token2 is "+token);
         const verifytoken= jwt.verify(token, SECRET_KEY);
         const rootuser= await Admin.findOne({_id: verifytoken._id, "tokens.token": token});
         if(!rootuser){
