@@ -86,6 +86,7 @@ app.post('/login1', async(req,res)=>{
         res.cookie("jwtoken", token,{
             expires: new Date(Date.now()+ 300000)
         });
+        console.log("token cookie is "+res.cookie);
         if(password==resp.password){
             res.json({message: "User login successfully"});
         }
