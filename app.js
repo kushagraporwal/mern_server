@@ -82,6 +82,7 @@ app.post('/login1', async(req,res)=>{
     }
     else{
         token= await resp.generateAuthToken();
+        console.log("token "+token);
         res.cookie("jwtoken", token,{
             expires: new Date(Date.now()+ 300000)
         });
