@@ -83,9 +83,13 @@ app.post('/login1', async(req,res)=>{
     else{
         token= await resp.generateAuthToken();
         console.log("token "+token);
+
         res.cookie("jwtoken", token,{
-            expires: new Date(Date.now()+ 300000)
+            expires: new Date(Date.now()+ 300000),
+            sameSite :none,
+            Secure:true
         });
+
         console.log("token cookie is "+res.cookie);
         if(password==resp.password){
             res.json({message: "User login successfully"});
